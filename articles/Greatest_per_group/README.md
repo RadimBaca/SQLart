@@ -1,4 +1,4 @@
-# Greatest per group - Window function vs GROUP BY
+# Greatest per Group - Window Function vs Self-join
 
 DBMS: PostgreSql 9.6.1
 
@@ -76,7 +76,7 @@ Planning Time: 0.962 ms
 Execution Time: 497.054 ms
 ```
 
-## Adjusting the filter condition and impact of indexes
+## Adjusting the Filter Condition and Impact of Indexes
 
 The problem of window function query is the sort of the large intermediate result, rank assignment and subsequent filtering. If we change the selectivity of the `WHERE` clause, we might get a slightly different statistics. The following picture shows how the processing time changes with changes in the query selectivity. 
 
@@ -90,13 +90,13 @@ CREATE INDEX ix_customer_countryid ON customer(countryId, payment, id);
 ```
 If we process the above queries having this index, the processing time is 720 ms vs 325 ms. The window function query avoids expensive sort in this case; however, the assignment of ranks and subsequent filtering using a sequential scan is still quite expensive. Therefore, the GROUP BY variant is still significantly faster.
 
-## The problem analysis
+## The Problem Analysis
 
 What is the root cause of this situation which makes window function quite slow fellow? By doing a closer look, we reveal that the major problem here is a fact that we discard most of the previous work when we process the `rank = 1` condition. In other words, we compute the rank for many rows, and we even need to sort the whole set to do that; however, we are interested only in rows having rank equal to 1 which is a tiny part of the input. Using a hash table (the GROUP BY variant) for the same agenda seems to be a better option in many cases.
 
 Can we generalize these observations and find a rule when the query plan produced by window functions syntax is potentially worse than some GROUP BY/subquery syntax? We believe that it is possible. The rule is as follows: **Whenever we have a window function on a potentially large set, and we subsequently perform filtering with high selectivity then it may be better to perform the filtering first and then compute the window function value using a join.**
 
-## Yet another example
+## Yet Another Example
 
 Let us show another example following the previously stated rule. Let us compute the average payment in the country for several customers. Therefore the window function SQL variant could be as follows:
 
