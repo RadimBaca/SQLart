@@ -119,8 +119,8 @@ SELECT *, (
 FROM customer c1
 WHERE id in (1, 10, 100, 1001);
 ```
-Even though the sequential scan for every customer found is inevitable, this variant is still slightly faster than the window function variant. However, it performs unindexed nested-loop join; therefore, the query time grows linearly with the size of the intermediate result (the number of customers found). Therefore, the existence of an index on `customer.countryId` attribute is highly desired to choose the query plan with nested-loop join. Especially, if there is a risk of bad intermediate result estimation.
+Even though the sequential scan for every customer found is inevitable, this variant is still slightly faster than the window function variant. However, it performs unindexed nested-loop join; therefore, the query time grows linearly with the size of the intermediate result (the number of customers found). Therefore, the existence of an index on `customer.countryId` attribute is highly desired to choose the query plan with nested-loop join; especially if there is a risk of bad intermediate result estimation.
 
 # Conclusion
 
-The main aim of this article is propose quite a simple rule that might be usefull when optimizing the queries with window function. The window functions itself always lead to the same type of query plans considering partitioning, sort and window function computation. We beleive that it would be good if the query optimizers would consider also other query plans.
+The main aim of this article is to propose quite a simple rule that might be useful when optimizing the queries with window function. The window functions itself always lead to the same type of query plans considering partitioning, sort and window function computation. We believe that it would be good if the query optimizers would also consider other query plans.
