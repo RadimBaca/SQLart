@@ -94,7 +94,7 @@ If we process the above queries having this index, the processing time is 720 ms
 
 What is the root cause of this situation which makes window function quite slow fellow? By doing a closer look, we reveal that the major problem here is a fact that we discard most of the previous work when we process the `rank = 1` condition. In other words, we compute the rank for many rows, and we even need to sort the whole set to do that; however, we are interested only in rows having rank equal to 1 which is a tiny part of the input. Using a hash table (the GROUP BY variant) for the same agenda seems to be a better option in many cases.
 
-Can we generalize these observations and find a rule when the query plan produced by window functions syntax is potentially worse than some GROUP BY/subquery syntax? We believe that it is possible. The rule is as follows: **Whenever we have a window function on a potentially large set, and we subsequently perform filtering with high selectivity.**
+Can we generalize these observations and find a rule when the query plan produced by window functions syntax is potentially worse than some GROUP BY/subquery syntax? We believe that it is possible. The rule is as follows: **Whenever we have a window function on a potentially large set, and we subsequently perform filtering with high selectivity then it may be better to perform the filtering first and then compute the window function value using a nested-loop join.**
 
 ## Yet another example
 
