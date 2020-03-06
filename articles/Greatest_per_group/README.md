@@ -78,10 +78,10 @@ Execution Time: 497.054 ms
 
 # Adjusting the filter condition
 
-The problem of window function solution is obviously the sort of the large intermediate result. If we change the selectivity of the `WHERE` clause we might get a slightly different statistics. The following picture shows how the processing time changes with the 
+The problem of window function solution is obviously the sort of the large intermediate result. If we change the selectivity of the `WHERE` clause we might get a slightly different statistics. The following picture shows how the processing time changes with changes of the query selectivity. 
 
 
-<img ref="selection.png" width="500"/>
+<img src="selection.jpg" width="500"/>
 
 
 
