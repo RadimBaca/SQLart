@@ -81,7 +81,7 @@ Execution Time: 497.054 ms
 The problem of window function solution is obviously the sort of the large intermediate result. If we change the selectivity of the `WHERE` clause we might get a slightly different statistics. The following picture shows how the processing time changes with the 
 
 
-<img ref="img/selection.png" width="500"/>
+<img ref="img\selection.png" width="500"/>
 
 
 
