@@ -123,4 +123,9 @@ Even though the sequential scan for every customer found is inevitable, this var
 
 # Conclusion
 
-The main aim of this article is to propose quite a simple rule that might be useful when optimizing the queries with window function. The window functions itself always lead to the same type of query plans considering partitioning, sort and window function computation. We believe that it would be good if the query optimizers would also consider other query plans.
+The window functions in a query are straightforwardly compiled into a sequence of operators considering partitioning, sort and window function computation, and that is not just PostgreSQL. All of the nowadays database systems that implement window function are working that way. There isn't even a scientific work considering a window function rewriting into some other query plan. The existing works consider optimization on a level of algorithms that perform the partitioning, sorting and function computation [1,2]. We believe that it would be good if the query optimizers would also consider other query plans in the cases described in this article.
+
+# References
+[1] Leis, Viktor, et al. "Efficient processing of window functions in analytical SQL queries." Proceedings of the VLDB Endowment 8.10 (2015): 1058-1069.
+
+[2] Cao, Yu, et al. "Optimization of Analytic Window Functions." Proceedings of the VLDB Endowment 5.11 (2012).
