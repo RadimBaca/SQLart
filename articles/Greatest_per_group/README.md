@@ -96,7 +96,9 @@ What is the root cause of this situation which makes window function quite slow 
 
 Can we generalize these observations and find a rule when the query plan produced by window functions syntax is potentially worse than some GROUP BY/subquery syntax? We believe that it is possible. The rule is as follows: **Whenever we have a window function on a potentially large set, and we subsequently perform filtering with high selectivity.**
 
-Let us show another example following the rule. Let us compute the average payment in the country for several customers. Therefore the window function SQL variant could be as follows:
+## Yet another example
+
+Let us show another example following the previously stated rule. Let us compute the average payment in the country for several customers. Therefore the window function SQL variant could be as follows:
 
 ```sql
 SELECT *
@@ -117,5 +119,5 @@ SELECT *, (
 FROM customer c1
 WHERE id in (1, 10, 100, 1001);
 ```
-Even though the sequential scan is inevitable, this variant is still slightly faster than the window function variant. However, it performs unindexed nested-loop join; therefore, the query time grows linearly with the size of the intermediate result (the number of customers found).
+Even though the sequential scan is inevitable, this variant is still slightly faster than the window function variant. However, it performs unindexed nested-loop join; therefore, the query time grows linearly with the size of the intermediate result (the number of customers found). Therefore, the existence of an index on `customer.countryId` attribute is highly desired to choose the query plan with nested-loop join.
 
