@@ -1,2 +1,3 @@
 # SQLart
-Collection of short SQL articles
+
+Collection of short articles on aiming the SQL databases.
