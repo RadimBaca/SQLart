@@ -1,6 +1,7 @@
 # Greatest per Group Problem - Window Function vs Self-join
 
 Date: 6.3.2020
+
 DBMS: PostgreSql 9.6.1
 
 Let us have a sample table with customers where each customer belongs to one of one thousand countries (`countryId` attribute). Each customer has one `payment` attribute randomly selected from `(0,10000)` interval. The following command load 1M customers into a PostgreSQL database.

@@ -1,5 +1,6 @@
 # Intersection with different database designs
 Date: 30.5.2022
+
 DBMS: PostgreSql 11.11
 
 Let us imagine that we need to store information about documents where every document contains a set of words and our typical query is to search for documents containing a specific set of words. The idea behind this problem can be identified in different scenarios such as products and their features, or persons and their skills. The topic is not that important, what is significant is that we basically want to perform an intersection of several lists. In this article, we describe and compare several different ways how to handle this problem in PostgreSQL. 

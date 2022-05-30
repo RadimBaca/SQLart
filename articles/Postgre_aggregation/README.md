@@ -1,6 +1,7 @@
 # Query efficiency dependent on SQL syntax in PostgreSQL
 
 Date: 13.3.2019
+
 DBMS: PostgreSql 9.6.1
 
 This article shows an example where the SQL syntax can make a difference in the query processing time. The example is prepared for PostgreSql 9.6.1, however, the main aim is to speak generally about the SQL declarativeness.
