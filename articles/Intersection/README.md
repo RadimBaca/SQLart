@@ -139,7 +139,7 @@ We have been testing these approaches on a quite old server with Intel Xeon X567
 
 Tables clearly show a dominance of Roaringbitmap approach from the query time and index size perspective. However, these are not the only aspects of data processing. There are certain drawbacks of non-relational approaches that need to be kept in mind if we consider using them:
 
-1. Values in an array are not foreign keys. Therefore, referential integrity inside the database has to be maintained by the application.
+1. Values in an array are not foreign keys (<a href="https://commitfest.postgresql.org/17/1252/">yet</a>). Therefore, referential integrity inside the database has to be maintained by the application.
 2. It can be particularly costly to add new documents into the Roaringbitmap implementation of our database.
 3. It may be difficult to express a different type of query using the ARRAY or Roaringbitmap approach.
 
