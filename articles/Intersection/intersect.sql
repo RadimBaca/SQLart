@@ -113,7 +113,7 @@ GROUP BY id_word, padding;
 
 ---- Queries
 
--- We search for documents containing words 2, 14, 30, 50, 80
+-- We search for documents containing words 10, 20, 30
 -- Versio No.1 - Binding table
 SELECT id_doc
 FROM Belongs
