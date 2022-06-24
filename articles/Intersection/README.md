@@ -11,7 +11,7 @@ We first start with the most straightforward solution storing the data in the re
 
 <img src="img\relational_model.png" alt="Relational data model" width="700"/>
 
-Sample <a src="intersect.sql">SQL script</a> contains an anonymous procedure that create these tables and generate artificial data. The number of words is fixed to one hundred, whereas the number of documents can be set using the `v_numOfDoc` variable. The initial value of documents is ten thousand. Script randomly assigns words to documents. In the end, we create an index that helps the query processor quickly find the documents according to the list of words. For simplicity, we use just their `id`.
+Sample [SQL script](intersect.sql) contains an anonymous procedure that create these tables and generate artificial data. The number of words is fixed to one hundred, whereas the number of documents can be set using the `v_numOfDoc` variable. The initial value of documents is ten thousand. Script randomly assigns words to documents. In the end, we create an index that helps the query processor quickly find the documents according to the list of words. For simplicity, we use just their `id`.
 
 ```sql
 CREATE INDEX idx_Belongs_idword ON Belongs (id_word);
