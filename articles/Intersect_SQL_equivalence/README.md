@@ -68,7 +68,7 @@ SELECT name FROM person
 WHERE year >= 1900;
 ```
 
-If we think about the queries more thoroughly, we can realize that a `name` could be duplicated by the `INTERSECT ALL` version of the query. Can you pick data where these two queries return different results? It is not straightforward as can be observed from my conversation with chatGPT where I convinced him that these SQL queries are equivalent because he was unable to find a counter example after several attempts :)
+If we think about the queries more thoroughly, we can realize that a `name` could be duplicated by the `INTERSECT ALL` version of the query. Can you pick data where these two queries return different results? It is not straightforward. I even asked chatGPT out of curiosity. He correctly recognized that the SQL queries were probably not equivalent. However, he was unable to provide a counterexample. Finaly I convinced him that these SQL queries are equivalent. Here is an end of our conversation. :) 
 
 <img src="chat.png" alt="Are SQL commands equivalent"/>
 
