@@ -70,7 +70,7 @@ WHERE year >= 1900;
 
 If we think about the queries more thoroughly, we can realize that a `name` could be duplicated by the `INTERSECT ALL` version of the query. Can you pick data where these two queries return different results? It is not straightforward as can be observed from my conversation with chatGPT where I convinced him that these SQL queries are equivalent because he was unable to find a counter example after several attempts :)
 
-<img src="chat.png" alt="Are SQL commands equivalent" width="700"/>
+<img src="chat.png" alt="Are SQL commands equivalent"/>
 
 
 # Conclusion
