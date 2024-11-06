@@ -1,4 +1,4 @@
-# Intersection with different database designs
+# Intersection with Different Database Designs
 Date: 30.5.2022
 
 DBMS: PostgreSql 11.11
